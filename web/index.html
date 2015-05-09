@@ -8,23 +8,25 @@
 			<link rel="stylesheet" type="text/css" href="style.css">
 			<script src="https://code.jquery.com/jquery-1.10.2.js">
 			$(document).ready(function(){
-    $("coffee").click(function(){
-        $.post("demo_test_post.asp",
-        {
-          time:
-        },
-        function(data,status){
-        
-        });
-    });
-});</script>
-	<script>
+    	var countdownDom = document.getElementById("countdown");
+    	var currentNum =document.getElementById("countdown").value ;
 	function countdown() {
-	for (var currentNum =document.getElementById("countdown").value ;currentNum >0;currentNum--){
-		document.getElementById("countdown").innerHTML = currentNum;
+		if(currentNum!=0){
+			countdownDom.innerHTML=currentNum;
+			currentNum--;
+			setTimeout(countdown,1000);
+		}
 	} 
 }
-</script>
+ //       $.post("demo_test_post.asp",
+ //       {
+ //         time:
+ //       },
+ //       function(data,status){
+        
+ //       });
+ //   });
+});</script>
 		</head>
 			<body>
 				<h1>BrewM</h1>
