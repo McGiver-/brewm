@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-	<html lang="en">
 		<head>
 			<meta charset="UTF-8"/>
 			<title>BrewM</title>
 			<link rel="stylesheet" type="text/css" href="style.css">
-			<script src="https://code.jquery.com/jquery-1.10.2.js">
-			$(document).ready(function(){
-    	var countdownDom = document.getElementById("countdown");
-    	var currentNum =document.getElementById("countdown").value ;
-	function countdown() {
-		if(currentNum!=0){
-			countdownDom.innerHTML=currentNum;
-			currentNum--;
-			setTimeout(countdown,1000);
+			<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+			<script>
+			var countdown=null;
+			$( document ).ready(function() {
+					var countdownDom = document.getElementById("countdown");
+	console.log("hey");
+	$("#doit").click(function() {
+		var currentNum =document.getElementById("time").value;
+		console.log("hey");
+
+		function innerCountdown() {
+			console.log("hey");
+			if(currentNum!=-1){
+				countdownDom.innerHTML=currentNum;
+				currentNum--;
+				setTimeout(innerCountdown,1000);
+			}
+			return false;
 		}
-	} 
-}
+		
+		innerCountdown();
+		return false;
+	});
+});
+    
+  
  //       $.post("demo_test_post.asp",
  //       {
  //         time:
@@ -26,7 +38,7 @@
         
  //       });
  //   });
-});</script>
+</script>
 		</head>
 			<body>
 				<h1>BrewM</h1>
@@ -35,7 +47,7 @@
 					<form method="post" action="">
 						<label for="time">Brew in </label>
 						<input id="time" type="text">
-						 <button onclick="countdown()">Get that Joe</button> 
+						 <button id='doit'>Get that Joe</button> 
 					</form>
 				</br></br></br></br>
 				<label>Your exquisite coffee will begin its transformation in </label>
