@@ -6,7 +6,25 @@
 			<meta charset="UTF-8"/>
 			<title>BrewM</title>
 			<link rel="stylesheet" type="text/css" href="style.css">
-
+			<script src="https://code.jquery.com/jquery-1.10.2.js">
+			$(document).ready(function(){
+    $("coffee").click(function(){
+        $.post("demo_test_post.asp",
+        {
+          time:
+        },
+        function(data,status){
+        
+        });
+    });
+});</script>
+	<script>
+	function countdown() {
+	for (var currentNum =document.getElementById("countdown").value ;currentNum >0;currentNum--){
+		document.getElementById("countdown").innerHTML = currentNum;
+	} 
+}
+</script>
 		</head>
 			<body>
 				<h1>BrewM</h1>
@@ -15,10 +33,11 @@
 					<form method="post" action="">
 						<label for="time">Brew in </label>
 						<input id="time" type="text">
+						 <button onclick="countdown()">Get that Joe</button> 
 					</form>
 				</br></br></br></br>
 				<label>Your exquisite coffee will begin its transformation in </label>
-				<div class="">
+				<div class="" id="countdown">
 				</div>
 				</br>
 				<label>Coffee</label>
