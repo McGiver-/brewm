@@ -17,7 +17,7 @@ def specs():
 
 @app.route('/api/brew', methods=['POST'])
 def brew():
-    j = request.get_json(force=True)
+    j = request.get_json(True)
     if 'brewing' not in j:
         abort(400)
     pin.set_state(j['brewing'])

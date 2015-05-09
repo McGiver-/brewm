@@ -2,5 +2,8 @@
 
 set -e
 
-echo '3' > /sys/class/gpio/export ||
-chown brewer /sys/class/gpio/gpio3/*
+PIN=17
+
+echo $PIN > /sys/class/gpio/export || true
+echo 'out' > /sys/class/gpio/gpio$PIN/direction
+chown brewer /sys/class/gpio/gpio$PIN/*

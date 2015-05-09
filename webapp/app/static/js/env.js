@@ -1,35 +1,49 @@
 var countdown=null;
 var isBrewing = true;
-function updateBrewing(callback){
-	$.get("/api/status",function(response){
+var specs = {};
+
+function getBrewing(callback) {
+	$.get("/api/status", function(response){
 		isBrewing = response.brewing;
 		callback(isBrewing);
 	})
 }
 
-$( document ).ready(function() {
-    
-    updateBrewing(function(isBrewing){
-   	 	$("amount").text("Are we brewing"+response.brewing);
+function postBrewing(state, callback) {
+    $.post("/api/brew", JSON.stringify({ "brewing": state }), function(response) {
+        isBrewing = response.brewing;
+        callback(isBrewing);
     });
-   
-    var countdownDom = document.getElementById("countdown");
-   
-    $("#doit").click(function(){
-    	$.post("/api/brew", {"brewing":true},function(response){
+}
+
+function getSpecs(callback) {
+    $.get("/api/specs", function(response) {
+        specs = response;
+        callback(specs);
+    });
+}
+
+function setStatusText(state) {
+    if(state) {
         $("#status").text("Brewing...");
-   		});
-	});
+        $("#doit").text("Stop brewing");
+    }
+    else {
+        $("#status").text("Ready");
+        $("#doit").text("Brew");
+    }
+}
+
+$( document ).ready(function() {
+    getBrewing(setStatusText);
+
+    getSpecs(function(response){
+        $("#cups").text(
+                "Number of Cups of Coffee " + response.cups 
+                + " Number of mL of fluid Max"+response.ml);
+    });
 
     $("#doit").click(function(){
-   	 	$.get("/api/specs", function(response){
-       		$("#cups").text("Number of Cups of Coffee"+reponse.cups+"Number of mL of fluid Max"+reponse.ml);
-   	 	});
-	});
-    
-    $("#doit").click(function(){
-   		$.get("/api/status", function(response){
-        	$("#amount").text("Are we brewing"+response.brewing);
-   	 	});
+        postBrewing(!isBrewing, setStatusText);
 	});
 });
