@@ -22,23 +22,20 @@ body {
     flex-flow: column nowrap;
 }
 
-h1{
+h1 {
 	text-align: center;
 	font-family: myFirstFont;
 	font-size: 40pt;
 }
 
-
-h2{
+h2 {
 	color: #330000;
 	text-align: center;
 	font-family: myFirstFont;
 	font-size: 10pt;
 }
 
-
-
-body{
+body {
 	background-image: url("/static/images/coffeebg.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
