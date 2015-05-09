@@ -2,5 +2,5 @@
 
 set -e
 
-echo '3' > /sys/class/gpio/export
+echo '3' > /sys/class/gpio/export ||
 chown brewer /sys/class/gpio/gpio3/*
