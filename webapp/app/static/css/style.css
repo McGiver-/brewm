@@ -3,8 +3,25 @@
     src: url(./fonts/coldcoffee__2005______.ttf);
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
 h1{
-	color: #663300;
 	text-align: center;
 	font-family: myFirstFont;
 	font-size: 40pt;
