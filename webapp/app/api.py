@@ -21,3 +21,4 @@ def brew():
     if 'brewing' not in j:
         abort(400)
     pin.set_state(j['brewing'])
+    return jsonify({ 'brewing': j['brewing'] })
