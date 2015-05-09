@@ -1,4 +1,12 @@
-.middle{
+@font-face {
+    font-family: myFirstFont;
+    src: url(./fonts/coldcoffee__2005______.ttf);
+}
+
+h1
+{
+	color: #663300;
+	font-weight: bold;
 	text-align: center;
-	
+	font-family: myFirstFont;
 }
