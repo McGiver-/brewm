@@ -2,9 +2,20 @@ var countdown=null;
 var isBrewing = true;
 var specs = {};
 
+var countdown=function(timeleft){
+    if(timeleft==undefined){
+
+    }else if(timeleft<=0){
+        document.getElementById("countdown").innerHtml="Done"
+    }else{
+        document.getElementById("countdown").innerHtml=timeleft;
+        setTimeout(countdown,1000);
+    }
+}
 function getBrewing(callback) {
 	$.get("/api/status", function(response){
 		isBrewing = response.brewing;
+        countdown(response.time);
 		callback(isBrewing);
 	})
 }
