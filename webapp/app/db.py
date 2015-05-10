@@ -1,5 +1,5 @@
 import json
-import
+import os
 
 _BASE_DIR = 'db'
 
@@ -13,7 +13,7 @@ def load(key):
 def load_default(key, default):
     try:
         return load(key)
-    except OSError:
+    except (IOError, OSError):
         return default
 
 def modify(key, function):
@@ -26,5 +26,5 @@ def save(key, value):
 def delete(key):
     try:
         os.remove(_path(key))
-    except OSError:
+    except (IOError, OSError):
         pass

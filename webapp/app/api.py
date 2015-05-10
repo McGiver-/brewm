@@ -13,9 +13,10 @@ _TIME_FMT = '%Y-%m-%dT%H:%M:%S%z'
 def status():
     state = pin.status()
     brew_time = db.load_default('brew_time', None)
+    brew_time = brew_time['time'] if brew_time is not None else None
     return jsonify({
         'brewing': state,
-        'time': brew_time['time']
+        'time': brew_time
     })
 
 @app.route('/api/specs', methods=['GET'])
