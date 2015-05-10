@@ -5,15 +5,24 @@ from threading import Timer
 
 from app import pin, db
 
-from datetime import datetime
+import datetime
 
-_TIME_FMT = '%Y-%m-%dT%H:%M:%S%z'
+_TIME_FMT = '%Y-%m-%dT%H:%M:%S'
+TIME = 360.0
+
+def remaining_time():
+    start_time = db.load_default('brew_time', None)
+    if start_time is None:
+        return None
+    elapsed = datetime.datetime.now() - datetime.datetime.strptime(
+            start_time['time'], _TIME_FMT)
+    remaining = TIME - elapsed.total_seconds()
+    return remaining
 
 @app.route('/api/status', methods=['GET'])
 def status():
     state = pin.status()
-    brew_time = db.load_default('brew_time', None)
-    brew_time = brew_time['time'] if brew_time is not None else None
+    brew_time = remaining_time()
     return jsonify({
         'brewing': state,
         'time': brew_time
@@ -21,7 +30,7 @@ def status():
 
 @app.route('/api/specs', methods=['GET'])
 def specs():
-    return jsonify({ 'brewTime': 360 })
+    return jsonify({ 'brewTime': TIME })
 
 def stop_brew():
     pin.set_state(False)
@@ -40,13 +49,14 @@ def brew():
         app.BREW_TIMER.cancel()
 
     if j['brewing']:
-        app.BREW_TIMER = Timer(360.0, stop_brew)
+        app.BREW_TIMER = Timer(TIME, stop_brew)
         app.BREW_TIMER.start()
 
-        t = datetime.now().strftime(_TIME_FMT)
+        t = datetime.datetime.now().strftime(_TIME_FMT)
         db.save('brew_time', {
             'time': t
         })
+        t = 360.0
     else:
         db.delete('brew_time')
 

@@ -14,33 +14,14 @@
     <script>
     $(document).ready(function(){
     $("#box").hide();
-    $("#img1").hide();
-    $("#img2").hide();
-    $("#img3").hide();
-    $("#img4").hide();
-    $("#img5").hide();
-    $("#img6").hide();
-    $("#img7").hide();
-    $("#img8").hide();
-    $("#img9").hide();
-    $("#img10").hide();
-    $("#img11").hide();
-    $("#img12").hide();
-    $("#img13").hide();
-    $("#img14").hide();
-    $("#img15").hide();
-    $("#img16").hide();
-    $("#img17").hide();
-    $("#img18").hide();
-    $("#img19").hide();
-
 
     $("#seePush").click(function(){
         $("#box").show();
         $("#box").animate({
             opacity:'0.3',
             height: '650px',
-            width: '650px'});
+            width: '650px'
+        });
     });
 
     $("#hidePush").click(function(){
@@ -51,19 +32,21 @@
         $("#box").hide();
     });
 
-    window.displayImgCount = 0;
-    function cycleImage(){
-        if (displayImgCount !== 0) {
-            document.getElementById("img" + displayImgCount).style.display = "none";
-        }
-        displayImgCount = displayImgCount === 19 ? 1 : displayImgCount + 1;
-        document.getElementById("img" + displayImgCount).style.display = "block";
-        setTimeout(cycleImage, 5000);
-        
+    cycleImageTimeout = null;
+
+    function cycleImage() {
+        $('.carousel > *').last().prependTo('.carousel');
+        cycleImageTimeout = setTimeout(cycleImage, 2500);
     }
 
     $("#doit").click(function(){
-        cycleImage();
+        if(cycleImageTimeout) {
+            clearTimeout(cycleImageTimeout);
+            cycleImageTimeout = null;
+        }
+        else {
+            cycleImage();
+        }
     });
      });
     </script>

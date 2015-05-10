@@ -1,17 +1,23 @@
 var countdown=null;
 var isBrewing = true;
 var specs = {};
+var timeout = null;
 
 var countdown=function(timeleft){
     console.log("countdown ", timeleft);
-    if(timeleft==undefined){
-
-    }else if(timeleft<=0){
-        document.getElementById("countdown").innerHtml="Done"
-    }else{
-        document.getElementById("countdown").innerHtml=timeleft;
-        setTimeout(function() { countdown(timeLeft - 1); },1000);
+    if(!timeleft || timeleft < 0) {
+        if(timeout != null) {
+            console.log(timeout);
+            clearTimeout(timeout);
+        }
+        console.log('done');
+        $("#countdown").text("Done");
+    } else {
+        console.log('not done');
+        $("#countdown").text(timeleft.toString());
+        timeout = setTimeout(function() { countdown(timeleft - 1); }, 1000);
     }
+}
 
 function getBrewing(callback) {
 	$.get("/api/status", function(response){
@@ -50,7 +56,6 @@ function setStatusText(state) {
 }
 
 $( document ).ready(function() {
-    alert('BITCH');
     getBrewing(setStatusText);
 
     getSpecs(function(response){

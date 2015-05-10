@@ -133,3 +133,11 @@ img.reg{
 	background-image: linear-gradient(to bottom, #330000, #6F4E37);
 	color:#ffffff;
 }
+
+.carousel {
+
+}
+
+.carousel > *:not(:first-child) {
+    display: none;
+}
