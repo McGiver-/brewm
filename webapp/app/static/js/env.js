@@ -10,6 +10,7 @@ var countdown=function(timeleft){
     }else{
         document.getElementById("countdown").innerHtml=timeleft;
         setTimeout(countdown,1000);
+        countdown(timeleft - 1);
     }
 }
 function getBrewing(callback) {
@@ -23,6 +24,7 @@ function getBrewing(callback) {
 function postBrewing(state, callback) {
     $.post("/api/brew", JSON.stringify({ "brewing": state }), function(response) {
         isBrewing = response.brewing;
+        countdown(response.time);
         callback(isBrewing);
     });
 }

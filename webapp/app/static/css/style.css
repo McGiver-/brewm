@@ -20,14 +20,13 @@ body {
     align-items: center;
     flex-flow: column nowrap;
 }
+
 #countdown{
 	font-family: myFirstFont;
 	font-size: 20pt;
 	float: left;
 	color: #330000;
 }
-
-
 
 h2{
 	color: #330000;
