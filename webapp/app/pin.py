@@ -5,18 +5,18 @@ PIN = 17 # this needs to match the number in init_pin.sh
 BASE = '/sys/class/gpio/gpio%d' % (PIN,)
 
 def status():
-    with open(os.path.join(BASE, 'direction'), 'rt') as f:
+    with open(os.path.join(BASE, 'value'), 'rt') as f:
         data = f.read().strip()
-    if data == 'in':
+    if data == '0':
         return False
-    elif data == 'out':
+    elif data == '1':
         return True
     else:
         raise RuntimeError('unknown state %s' % data)
 
 def set_state(value):
-    v = 'out' if bool(value) else 'in'
-    with open(os.path.join(BASE, 'direction'), 'wt') as f:
+    v = '1' if bool(value) else '0'
+    with open(os.path.join(BASE, 'value'), 'wt') as f:
         f.write(v)
 
 def on():
