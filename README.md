@@ -17,8 +17,7 @@ interchange format.
 
         {
             'brewing': boolean,
-            'coffee': float, (between 0.0 and 1.0)
-            'water': float (between 0.0 and 1.0)
+            'time': int, (time left for the brew to complete)
         }
 
 * GET /api/specs
@@ -26,10 +25,7 @@ interchange format.
     Describes the static specifications of the coffeemaker.
 
         {
-            'capacity': {
-                'cups': integer, (advertized number of cups brewed)
-                'ml': float (milliliters of fluid max)
-            }
+            'brewTime': int (number of seconds to brew a pot)
         }
 
 * POST /api/brew
@@ -38,5 +34,4 @@ interchange format.
 
         {
             'brewing': boolean,
-            'time': float, (optional; number of seconds)
         }
