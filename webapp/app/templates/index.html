@@ -9,8 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="../static/js/env.js"></script>
-    <script type="text/javascript"></script>
+    <script src="/static/js/env.js"></script>
 
     <script>
     $(document).ready(function(){
@@ -52,35 +51,28 @@
         $("#box").hide();
     });
 
-     window.onload = function(){
-        window.displayImgCount = 0;
-        function cycleImage(){
-            if (displayImgCount !== 0) {
-                document.getElementById("img" + displayImgCount).style.display = "none";
-            }
-            displayImgCount = displayImgCount === 19 ? 1 : displayImgCount + 1;
-            document.getElementById("img" + displayImgCount).style.display = "block";
-            setTimeout(cycleImage, 5000);
-            
+    window.displayImgCount = 0;
+    function cycleImage(){
+        if (displayImgCount !== 0) {
+            document.getElementById("img" + displayImgCount).style.display = "none";
         }
+        displayImgCount = displayImgCount === 19 ? 1 : displayImgCount + 1;
+        document.getElementById("img" + displayImgCount).style.display = "block";
+        setTimeout(cycleImage, 5000);
+        
+    }
 
     $("#doit").click(function(){
         cycleImage();
     });
-    }
-
-    });
-</script>
-
-
-
-
-
+     });
+    </script>
+</head>
+<body>
     <title>BrewM</title>
-    
+
     <button id='doit'>Brew<i class="fa fa-coffee fa-2x"></i></button>
-    <body>
-        <h2><div id="status"></div></h2>    
+    <h2><div id="status"></div></h2>    
     <div class = 'carousel'>
         <img id="img1" class="reg" src='../static/images/img1.jpg'>
         <img id="img2" class="reg" src='../static/images/img2.jpg'>
@@ -105,7 +97,7 @@
 
     </body>
 
-
+    <div id="countdown"></div>
     <div id="brewThis"><div id="popupdiv">Can't brew this</div></div>
     <div id="findPusheen"><div id="popupdiv">Can you find the secret Pusheen?</div></div>
     
