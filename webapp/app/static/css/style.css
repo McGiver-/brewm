@@ -92,6 +92,7 @@ img.reg{
 #brew #popupdiv {display:none;}
 #findPusheen #popupdiv{display:none;}
 #seePush #popupdiv{display:none;}
+#veryDoge #popupdiv{display:none;}
 
 
 
@@ -100,6 +101,7 @@ img.reg{
 #brew:hover #popupdiv{display:block;}
 #findPusheen:hover #popupdiv{display:block;}
 #seePush:hover #popupdiv{display:block;}
+#veryDoge:hover #popupdiv{display:block;}
 
 
 
@@ -140,4 +142,20 @@ img.reg{
 
 .carousel > *:not(:first-child) {
     display: none;
+}
+
+
+#veryDoge{
+	position:absolute;
+	top:80%;
+	left:80%;
+	width: 250px;
+	height: 50px;
+	font-size: 20px;
+}
+
+#doge{
+	position:fixed;
+	top:0px;
+	left:0px;
 }

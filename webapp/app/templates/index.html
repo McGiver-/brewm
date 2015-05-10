@@ -6,14 +6,39 @@
     <meta charset="UTF-8"/>
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/static/js/env.js"></script>
 
     <script>
     $(document).ready(function(){
-    $("#box").hide();
+        $("#box").hide();
+        $("#doge").hide();
+
+        var window_Height = window.innerHeight;
+        var window_Width = window.innerWidth;
+        
+        var image_Element = document.getElementById("doge");
+        var image_Height = image_Element.clientHeight;
+        var image_Width = image_Element.clientWidth;
+        
+        var availSpace_V = window_Height - image_Height;
+        var availSpace_H = window_Width - image_Width;
+        
+       //var changeInterval = 0; // Time has to be in miliseconds. So, 3000 is 3 seconds
+        var stahpIt= false;
+            
+            function moveImage(){
+                if(!stahpIt){
+                $("#doge").show();
+
+                var randNum_V = Math.floor((Math.random() * availSpace_V) + 1);
+                var randNum_H = Math.floor((Math.random() * availSpace_H) + 1);
+                
+                image_Element.style.top = randNum_V + "px";
+                image_Element.style.left = randNum_H + "px";}
+            }
 
     $("#seePush").click(function(){
         $("#box").show();
@@ -32,6 +57,18 @@
         $("#box").hide();
     });
 
+    $("#stahpDoge").click(function(){
+            $("#doge").hide();
+            stahpIt=true;
+    });
+
+    $("#veryDoge").click(function(){
+        stahpIt=false;
+        $("#doge").show();
+        setInterval(moveImage, 2000);
+
+    });
+
     cycleImageTimeout = null;
 
     function cycleImage() {
@@ -48,7 +85,11 @@
             cycleImage();
         }
     });
-     });
+
+    
+
+    });
+
     </script>
 </head>
 <body>
@@ -81,12 +122,15 @@
     </body>
 
     <div id="countdown"></div>
-    <div id="brewThis"><div id="popupdiv">Can't brew this</div></div>
+
+    <div id="veryDoge"><div id="popupdiv">very click, much flash, wow</div></div>
     <div id="findPusheen"><div id="popupdiv">Can you find the secret Pusheen?</div></div>
     
     <div id="seePush"><div id="popupdiv">A click away from Pusheen...</div></div>
 
-    <div id="pusheen"><div id="popupdiv"><div id="hidePush"><img src="/static/images/secretPusheen.png" id="box"></div></div></div>
+    <div id="pusheen"><div id="popupdiv"><div id="hidePush"><img src="../static/images/secretPusheen.png" id="box"></div></div></div>
+
+    <div id="stahpDoge"><img src="../static/images/veryDoge.png" id="doge"></div>
 
 </head>
 
