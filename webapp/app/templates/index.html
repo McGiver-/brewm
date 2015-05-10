@@ -6,7 +6,7 @@
     <meta charset="UTF-8"/>
     
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="/static/js/env.js"></script>
@@ -15,7 +15,7 @@
     $(document).ready(function(){
         $("#box").hide();
         $("#doge").hide();
-
+    
         var window_Height = window.innerHeight;
         var window_Width = window.innerWidth;
         
@@ -73,11 +73,11 @@
 
     function cycleImage() {
         $('.carousel > *').last().prependTo('.carousel');
-        cycleImageTimeout = setTimeout(cycleImage, 2500);
+        cycleImageTimeout = setTimeout(cycleImage, 4000);
     }
 
     $("#doit").click(function(){
-        if(cycleImageTimeout) {
+            if(cycleImageTimeout) {
             clearTimeout(cycleImageTimeout);
             cycleImageTimeout = null;
         }
@@ -124,13 +124,13 @@
     <div id="countdown"></div>
 
     <div id="veryDoge"><div id="popupdiv">very click, much flash, wow</div></div>
-    <div id="findPusheen"><div id="popupdiv">Can you find the secret Pusheen?</div></div>
+    <div id="findPusheen"><div id="popupdiv">Can you find the secret Pusheen and Doge?</div></div>
     
     <div id="seePush"><div id="popupdiv">A click away from Pusheen...</div></div>
 
     <div id="pusheen"><div id="popupdiv"><div id="hidePush"><img src="../static/images/secretPusheen.png" id="box"></div></div></div>
 
-    <div id="stahpDoge"><img src="../static/images/veryDoge.png" id="doge"></div>
+    <div id="stahpDoge"><img src="/static/images/veryDoge.png" id="doge"></div>
 
 </head>
 
