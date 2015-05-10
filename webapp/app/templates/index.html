@@ -4,12 +4,51 @@
 
 <head>
     <meta charset="UTF-8"/>
+    
+
+
+
     <title>BrewM</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../static/js/env.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+    $("#box").hide();
+    $("#seePush").click(function(){
+        $("#box").show();
+        $("#box").animate({
+            opacity:'0.3',
+            height: '650px',
+            width: '650px'});
+    });
+
+    $("#hidePush").click(function(){
+        $("#box").animate({
+        opacity:'1',
+        height: '100px',
+        width: '100px'});
+        $("#box").hide();
+    });
+
+    });
+
+    </script>
+
+
+
+    <div id="brewThis"><div id="popupdiv">Can't brew this</div></div>
+    <div id="secrets"><div id="popupdiv">coffee everywhere</div></div>
+    <div id="brew"><div id="popupdiv">Shit's about to get brewed</div></div>
+    <div id="findPusheen"><div id="popupdiv">Can you find the secret Pusheen?</div></div>
+    
+    <div id="seePush"><div id="popupdiv">A click away from Pusheen...</div></div>
+
+    <div id="pusheen"><div id="popupdiv"><div id="hidePush"><img src="../static/images/secretpusheen.png" width="70%" height="70%" id="box"></div></div></div>
+
 </head>
 
 <body>
